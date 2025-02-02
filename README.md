@@ -50,7 +50,154 @@ To run the NutriVision application, use the command `streamlit run nutrivision_a
 
 ---
 
+# NutriVision 🍽️
+## AI-Powered Food Recognition & Nutritional Analysis Platform
 
+NutriVision is an advanced AI platform that combines computer vision, nutritional analysis, and generative AI to help users make informed dietary decisions. By simply taking a photo of their food, users receive detailed nutritional information, personalized recommendations, and sustainability insights.
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.0%2B-orange)
+
+## 🌟 Features
+
+- **Automatic Food Recognition**: Identifies food items from photos with 84% accuracy using EfficientNet architecture
+- **Nutritional Analysis**: Real-time nutritional information via USDA FoodData Central API
+- **Smart Recommendations**: Personalized dietary suggestions using GPT-based AI
+- **Sustainability Insights**: Environmental impact analysis of food choices
+- **User-Friendly Interface**: Simple photo-to-analysis workflow
+
+## 🛠️ Technology Stack
+
+- **Deep Learning**: TensorFlow, EfficientNetB7
+- **APIs**: USDA FoodData Central, Carbon Cloud
+- **Generative AI**: GPT-based models for personalized recommendations
+- **Data Processing**: Python, Pandas, NumPy
+- **Image Processing**: OpenCV, TensorFlow Image
+
+## 📋 Prerequisites
+
+- Python 3.8+
+- TensorFlow 2.0+
+- CUDA-compatible GPU (recommended)
+- Git LFS for model files
+
+## 🚀 Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/NutriVision.git
+cd NutriVision
+```
+
+2. Install required packages:
+```bash
+pip install -r requirements.txt
+```
+
+3. Download the model weights:
+```bash
+# If using Git LFS
+git lfs pull
+
+# Or manually download from releases
+python scripts/download_models.py
+```
+
+4. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your API keys
+```
+
+## 📁 Project Structure
+
+```
+NutriVision/
+├── src/
+│   ├── model/              # Model architecture and training
+│   ├── api_integration/    # API handlers
+│   └── recommendation/     # Generative AI module
+├── data/
+│   ├── raw/               # Original datasets
+│   └── processed/         # Processed data
+├── notebooks/             # Jupyter notebooks
+├── requirements.txt       # Dependencies
+├── README.md
+└── .gitignore
+```
+
+## 💻 Usage
+
+1. Start the application:
+```python
+python src/main.py
+```
+
+2. Upload an image through the interface or API:
+```python
+from nutrivision import FoodAnalyzer
+
+analyzer = FoodAnalyzer()
+results = analyzer.analyze_image("path/to/food_image.jpg")
+```
+
+3. Get nutritional analysis and recommendations:
+```python
+nutrition = results.get_nutrition()
+recommendations = results.get_recommendations()
+```
+
+## 🔄 API Integration
+
+### USDA FoodData Central API
+```python
+from nutrivision.api import USDAClient
+
+usda_client = USDAClient(api_key="your_key")
+nutrition_data = usda_client.get_nutrition(food_id)
+```
+
+### Carbon Cloud API (Optional)
+```python
+from nutrivision.api import CarbonClient
+
+carbon_client = CarbonClient(api_key="your_key")
+sustainability_data = carbon_client.get_footprint(food_id)
+```
+
+
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Team
+
+- Malhar Sham Ghogare - [@MalharGhogare](https://github.com/YourGitHub)
+- Shubham Gaur - [@ShubhamGaur](https://github.com/YourGitHub)
+
+## 🙏 Acknowledgments
+
+- Food-101 Dataset from ETH Zurich
+- USDA FoodData Central for nutritional data
+- Carbon Cloud for sustainability metrics
+- Our World in Data for environmental impact data
+
+## 📧 Contact
+
+For questions and feedback:
+- Email: ghogare.m@northeastern.edu
+- LinkedIn: [Your LinkedIn]
+- Project Link: [GitHub Repository URL]
 ## **Deployment**
 
 To deploy NutriVision on Streamlit Cloud:
